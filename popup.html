@@ -5,16 +5,28 @@
   <title>网址收藏</title>
   <meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/popup.css">
 </head>
 
 <body>
   <div class="container">
-    <h1>网址收藏</h1>
+    <h4>试验一下bootstrap</h4>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">@</span>
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+    </div>
+    <h4>试验一下获取当前url</h4>
     <button class="get-url">获取地址</button>
     <p class="show-url"></p>
+    <h4>试验一下存储</h4>
+    <button class="set-data">设置值</button>
+    <button class="get-data">取值</button>
+    <p class="show-data"></p>
   </div>
   <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script src="js/popup.js"></script>
 </body>
 

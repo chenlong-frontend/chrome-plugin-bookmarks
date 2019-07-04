@@ -11,4 +11,16 @@ $(function() {
       $('.show-url').text(tabs[0].url)
     })
   })
+
+  $('.set-data').on('click', function() {
+    chrome.storage.sync.set({ token: 'token' }, function() {
+      console.log('值保存好了')
+    })
+  })
+  $('.get-data').on('click', function() {
+    chrome.storage.sync.get('token', function(v) {
+      console.log(v)
+      $('.show-data').text(v.token)
+    })
+  })
 })
