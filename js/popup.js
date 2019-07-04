@@ -1,4 +1,12 @@
+var token = null
 $(function() {
+  chrome.storage.sync.get('token', function(v) {
+    token = v.token
+    if (token) {
+      $('.login').hide()
+      $('.bookmark').show()
+    }
+  })
   // $('.get-url').on('click', function() {
   //   // chrome.bookmarks.create({
   //   //   parentId: '1',
