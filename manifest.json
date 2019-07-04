@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "bookmarks",
+  "version": "0.0.1",
+  "description": "在线收藏网址插件",
+  "icons": {
+    "16": "img/icon-16.png",
+    "48": "img/icon-48.png",
+    "128": "img/icon-128.png"
+  },
+  "background": {
+    "page": "background.html"
+  },
+  "browser_action": {
+    "default_icon": "img/icon-48.png",
+    "default_title": "在线网址收藏",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "bookmarks",
+    "tabs",
+    "activeTab",
+    "storage"
+  ]
+}
