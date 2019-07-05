@@ -38,15 +38,15 @@ $(function() {
     })
 
     // 向后台发起请求
-    // $.ajax({
-    //   method: 'POST',
-    //   url: 'xxx',
-    //   data: value
-    // }).done(function(msg) {
-    //   chrome.storage.sync.set({ token: 'token' }, function() {
-    //     console.log('值保存好了')
-    //   })
-    // })
+     $.ajax({
+       method: 'POST',
+       url: 'http://127.0.0.1:5000/auth/verifyUserInfo',
+       data: value
+     }).done(function(msg) {
+       chrome.storage.sync.set({ token: 'token' }, function() {
+         console.log('值保存好了')
+       })
+     })
 
     // 请求结束切换显示
     $('.login').hide()
