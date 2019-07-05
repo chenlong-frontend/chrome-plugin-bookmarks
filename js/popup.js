@@ -22,12 +22,13 @@ $(function() {
       url: 'http://119.3.107.239:5000/auth/verifyUserInfo',
       data: value
     }).done(function(res) {
-      console.log(res)
-      // chrome.storage.sync.set({ token: 'token' }, function() {
-      //   // 请求结束切换显示
-      //   $('.login').hide()
-      //   $('.bookmark').show()
-      // })
+      if (res.code !== 0) return
+      chrome.storage.sync.set({ token: res.token }, function() {
+        token = res.token
+        // 请求结束切换显示
+        $('.login').hide()
+        $('.bookmark').show()
+      })
     })
   })
 
