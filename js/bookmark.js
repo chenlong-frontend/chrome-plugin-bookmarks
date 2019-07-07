@@ -16,17 +16,8 @@ $(function() {
     value.url = url
 
     // 向后台发起请求
-    $.ajax({
-      method: 'POST',
-      url: 'http://119.3.107.239:5000/opt/save',
-      headers: {
-        Authorization: token,
-        Accept: 'application/json',
-        'Access-Control-Allow-Credentials': '*'
-      },
-      data: value
-    }).done(function() {
-      console.log('值存好了')
+    post('/opt/save', value, function(res) {
+      $('.message').text('当前地址已录入')
     })
   })
 })

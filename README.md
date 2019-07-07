@@ -1,3 +1,3 @@
 # chrome-plugin-bookmarks
 
-一次谷歌插件的试水之作
+google 插件后端 git [项目地址](https://github.com/codergithut/chrome_plugins.git)

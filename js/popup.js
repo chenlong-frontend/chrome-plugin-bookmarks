@@ -1,9 +1,10 @@
-var token = null
 $(function() {
   chrome.storage.sync.get('token', function(v) {
-    token = v.token
-    if (token) {
+    global.token = v.token
+    if (global.token) {
       $('.login').hide()
+      $('.user').show()
+      $('.empty').hide()
       $('.bookmark').show()
     }
   })
@@ -16,17 +17,13 @@ $(function() {
       value[item.name] = item.value
     })
 
-    // 向后台发起请求
-    $.ajax({
-      method: 'POST',
-      url: 'http://119.3.107.239:5000/auth/verifyUserInfo',
-      data: value
-    }).done(function(res) {
-      if (res.code !== 0) return
+    post('/auth/verifyUserInfo', value, function(res) {
       chrome.storage.sync.set({ token: res.token }, function() {
-        token = res.token
+        global.token = res.token
         // 请求结束切换显示
         $('.login').hide()
+        $('.user').show()
+        $('.empty').hide()
         $('.bookmark').show()
       })
     })
@@ -35,6 +32,8 @@ $(function() {
   $('.logout').on('click', function() {
     chrome.storage.sync.remove('token', function() {
       $('.login').show()
+      $('.user').hide()
+      $('.empty').show()
       $('.bookmark').hide()
     })
   })

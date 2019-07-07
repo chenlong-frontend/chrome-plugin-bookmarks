@@ -1,17 +1,77 @@
-.container {
+main {
+  display: flex;
+  flex-direction: column;
   width: 400px;
   height: 400px;
+  color: #222;
+  margin: 0 auto;
 }
 
-.login {
+header {
+  height: 52px;
+  padding: 10px 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px #f0f1f2;
+}
+
+.login-form {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+}
+.login-form input {
+  margin-right: 5px;
+}
+
+.user {
+  display: none;
+}
+
+.user-box {
+  display: flex;
+}
+
+.user-box img {
+  width: 32px;
+}
+
+.user-box > div {
+  flex: 1;
+}
+.user-box .user-tool {
+  text-align: right;
+}
+
+.content {
+  flex: 1;
+  background: #efeff4;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 16px;
 }
 
 .bookmark {
   display: none;
-  margin-top: 100px;
+  padding: 15px;
+}
+.form-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+.form-item span {
+  flex: 45px;
+  font-size: 16px;
+  padding: 5px 0;
+}
+.bookmark-url {
+  font-size: 16px;
+}
+.bookmark-submit-box {
+  margin-top: 20px;
+  text-align: center;
+}
+footer {
+  padding: 10px 15px;
+  border-top: 1px solid #eee;
 }
