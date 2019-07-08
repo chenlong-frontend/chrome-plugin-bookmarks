@@ -14,13 +14,6 @@ header {
   box-shadow: 0 2px 8px #f0f1f2;
 }
 
-.login-form {
-  display: flex;
-}
-.login-form input {
-  margin-right: 5px;
-}
-
 .user {
   display: none;
 }
