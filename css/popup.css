@@ -1,10 +1,12 @@
 main {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 500px;
   height: 400px;
   color: #222;
   margin: 0 auto;
+  background: url('../img/bg.jpg') no-repeat center;
+  background-size: cover;
 }
 
 header {
@@ -35,7 +37,6 @@ header {
 
 .content {
   flex: 1;
-  background: #efeff4;
 }
 
 .empty {
@@ -63,8 +64,4 @@ header {
 .bookmark-submit-box {
   margin-top: 20px;
   text-align: center;
-}
-footer {
-  padding: 10px 15px;
-  border-top: 1px solid #eee;
 }

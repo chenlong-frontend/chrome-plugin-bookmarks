@@ -9,40 +9,39 @@
   <link rel="stylesheet" href="css/popup.css" />
   <script src="lib/js/vue.min.js"></script>
   <script src="lib/js/iview.min.js"></script>
+  <script src="lib/js/axios.min.js"></script>
 </head>
 
 <body>
-  <main>
+  <main id="main">
     <header>
-      <div class="login" id="login">
-        <!-- <form class="login-form">
-          <input type="username" class="form-control" name="username" placeholder="用户名">
-          <input type="password" class="form-control" name="password" placeholder="密码">
-          <button type="submit" class="btn btn-default login-submit">登录</button>
-        </form> -->
-        <i-form v-ref:form-inline :model="formInline" inline>
+      <div class="login">
+        <i-form ref="login" :model="login" inline>
           <Form-item prop="username">
-            <i-input type="text" style="width: 137px" :value.sync="formInline.username" placeholder="用户名"></i-input>
+            <i-input type="text" style="width: 180px" v-model="login.username" placeholder="用户名">
+              <Icon type="ios-person-outline" slot="prepend"></Icon>
+            </i-input>
           </Form-item>
           <Form-item prop="password">
-            <i-input type="password" style="width: 137px" :value.sync="formInline.password" placeholder="密码"></i-input>
+            <i-input type="password" style="width: 180px" v-model="login.password" placeholder="密码">
+              <Icon type="ios-lock-outline" slot="prepend"></Icon>
+            </i-input>
           </Form-item>
           <Form-item>
-            <i-button type="primary" @click="handleSubmit('formInline')">登录</i-button>
+            <i-button type="primary" @click="handleSubmit('login')">登录</i-button>
           </Form-item>
         </i-form>
       </div>
       <div class="user">
         <div class="user-box">
           <div>
-            <img src="./img/user.svg" alt="user" class="img-circle">
+            <img src="./img/user.svg" alt="user" class="img-circle" />
             <span>用户001</span>
           </div>
           <div class="user-tool">
             <button class="btn btn-default logout">注销</button>
           </div>
         </div>
-
       </div>
     </header>
     <div class="content">
@@ -55,18 +54,19 @@
           <p class="bookmark-url">当前网址：<span>未获取到</span></p>
           <div class="form-item">
             <span>备注:</span>
-            <input type="remark" class="form-control" name="remark" placeholder="备注">
+            <input type="remark" class="form-control" name="remark" placeholder="备注" />
           </div>
           <div class="bookmark-submit-box">
-            <button type="submit" class="btn btn-default bookmark-submit">收藏</button>
+            <button type="submit" class="btn btn-default bookmark-submit">
+              收藏
+            </button>
           </div>
         </form>
       </div>
     </div>
-    <footer>
-      <span class="message">暂无消息</span>
-    </footer>
   </main>
+  <script src="js/global.js"></script>
+  <script src="js/apis.js"></script>
   <script src="js/index.js"></script>
 </body>
 

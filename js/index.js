@@ -1,15 +1,27 @@
+var apis = Apis()
 new Vue({
-  el: '#login',
+  el: '#main',
   data: {
-    formInline: {
-      user: '',
+    login: {
+      username: '',
       password: ''
     }
   },
   methods: {
     handleSubmit(name) {
       this.$refs[name].validate(() => {
-        console.log(this.formInline)
+        apis
+          .login(this.login)
+          .then(res => {
+            this.$refs[name].resetFields()
+            chrome.storage.sync.set({ token: res.token }, () => {
+              global.token = res.token
+              this.$refs[name].resetFields()
+            })
+          })
+          .catch(() => {
+            this.$Message.error('登录失败')
+          })
       })
     }
   }
