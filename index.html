@@ -15,7 +15,8 @@
 <body>
   <main id="main">
     <header>
-      <div class="login">
+      <!--登录-->
+      <div v-if="!isAuth" class="login">
         <i-form ref="login" :model="login" inline>
           <Form-item prop="username">
             <i-input type="text" style="width: 180px" v-model="login.username" placeholder="用户名">
@@ -32,36 +33,37 @@
           </Form-item>
         </i-form>
       </div>
-      <div class="user">
-        <div class="user-box">
-          <div>
-            <img src="./img/user.svg" alt="user" class="img-circle" />
-            <span>用户001</span>
-          </div>
-          <div class="user-tool">
-            <button class="btn btn-default logout">注销</button>
-          </div>
-        </div>
+      <!--用户-->
+      <div v-if="isAuth">
+        <Row>
+          <i-col span="12">
+            <Avatar icon="ios-person"></Avatar>
+            <span class="user-name">用户1</span>
+          </i-col>
+          <i-col span="12" class="user-tool">
+            <i-button @click="logout">注销</i-button>
+          </i-col>
+        </Row>
       </div>
     </header>
     <div class="content">
-      <div class="empty">
-        <p>请登录</p>
-        <Icon type="ios-person-outline" slot="prepend"></Icon>
+      <!--未登录-->
+      <div v-if="!isAuth" class="empty">
+        <span>请登录</span>
       </div>
-      <div class="bookmark">
-        <form class="bookmark-form">
-          <p class="bookmark-url">当前网址：<span>未获取到</span></p>
-          <div class="form-item">
-            <span>备注:</span>
-            <input type="remark" class="form-control" name="remark" placeholder="备注" />
-          </div>
-          <div class="bookmark-submit-box">
-            <button type="submit" class="btn btn-default bookmark-submit">
-              收藏
-            </button>
-          </div>
-        </form>
+      <!--书签收藏-->
+      <div class="bookmark" v-if="isAuth">
+        <i-form ref="bookmark" :model="bookmark" label-position="left" :label-width="80">
+          <Form-item label="当前网址:">
+            <span>{{bookmark.url}}</span>
+          </Form-item>
+          <Form-item label="备注:" prop="remark">
+            <i-input type="remark" v-model="bookmark.remark" placeholder="备注"></i-input>
+          </Form-item>
+          <Form-item>
+            <i-button type="primary" @click="bookmarkSubmit('bookmark')">收藏</i-button>
+          </Form-item>
+        </i-form>
       </div>
     </div>
   </main>

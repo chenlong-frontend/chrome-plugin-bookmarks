@@ -16,22 +16,13 @@ header {
   box-shadow: 0 2px 8px #f0f1f2;
 }
 
-.user {
-  display: none;
+.user-name {
+  font-size: 16px;
+  margin-left: 10px;
+  vertical-align: middle;
+  color: #fff;
 }
-
-.user-box {
-  display: flex;
-}
-
-.user-box img {
-  width: 32px;
-}
-
-.user-box > div {
-  flex: 1;
-}
-.user-box .user-tool {
+.user-tool {
   text-align: right;
 }
 
@@ -41,23 +32,23 @@ header {
 
 .empty {
   text-align: center;
-  margin-top: 50px;
-  font-size: 16px;
+  margin-top: 140px;
+  font-size: 20px;
+}
+.empty span {
+  padding: 10px;
+  color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px #f0f1f2;
 }
 
 .bookmark {
-  display: none;
-  padding: 15px;
+  width: 340px;
+  padding: 15px 25px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.7);
 }
-.form-item {
-  display: flex;
-  margin-bottom: 10px;
-}
-.form-item span {
-  flex: 45px;
-  font-size: 16px;
-  padding: 5px 0;
-}
+
 .bookmark-url {
   font-size: 16px;
 }

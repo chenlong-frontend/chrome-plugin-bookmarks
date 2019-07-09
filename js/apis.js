@@ -52,6 +52,9 @@ function Apis() {
   return {
     login: function(data) {
       return request('/auth/verifyUserInfo', 'POST', data)
+    },
+    addBookmark: function(data) {
+      return request('/opt/save', 'POST', data)
     }
   }
 }
