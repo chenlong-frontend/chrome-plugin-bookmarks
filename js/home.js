@@ -1,5 +1,5 @@
 var apis = Apis()
-new Vue({
+var mainVue = new Vue({
   el: '#main',
   data: {
     isAuth: false,
@@ -15,11 +15,6 @@ new Vue({
               domProps: {
                 href: url,
                 target: '_blank'
-              },
-              on: {
-                click: () => {
-                  console.log(params.index)
-                }
               }
             },
             url

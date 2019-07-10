@@ -15,7 +15,7 @@ function Apis() {
         ...options
       })
       .then(res => {
-        if (res.status === 403) return Promise.reject({ code: 403 })
+        console.log(res)
         if (res.status >= 200 && res.status < 300) {
           return res.data
         }
@@ -29,6 +29,7 @@ function Apis() {
       })
       .catch(err => {
         if (err.response) {
+          if (err.response.status === 403) mainVue.$Message.error('请重新登录')
           return Promise.reject({
             code: err.response.status,
             message:
