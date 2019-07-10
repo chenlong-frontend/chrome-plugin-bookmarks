@@ -56,6 +56,9 @@ new Vue({
         .catch(() => {
           this.$Message.error('新增失败')
         })
+    },
+    openBackground() {
+      window.open(chrome.extension.getURL('background.html'))
     }
   }
 })

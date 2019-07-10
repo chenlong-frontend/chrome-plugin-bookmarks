@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<title>主页</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="lib/css/iview.css" />
+	<link rel="stylesheet" href="css/home.css" />
+	<script src="lib/js/vue.min.js"></script>
+	<script src="lib/js/iview.min.js"></script>
+	<script src="lib/js/axios.min.js"></script>
+</head>
+
+<body>
+	<main id="main">
+		<div class="layout">
+			<i-layout>
+				<i-header>
+					<i-menu mode="horizontal" theme="dark" active-name="1">
+						<div class="layout-logo"></div>
+						<div class="layout-nav">
+							<Menu-Item name="1">
+								<Icon type="ios-navigate"></Icon>
+								收藏列表
+							</Menu-Item>
+						</div>
+					</i-menu>
+				</i-header>
+				<i-content :style="{padding: '0 50px'}">
+					<Breadcrumb :style="{margin: '20px 0'}">
+						<Breadcrumb-Item>收藏列表</Breadcrumb-Item>
+					</Breadcrumb>
+					<Card>
+						<div style="min-height: 100%;">
+							<i-table stripe :columns="columns" :data="bookmarks"></i-table>
+						</div>
+					</Card>
+				</i-content>
+				<i-footer class="layout-footer-center">2019-2019 &copy; bookmark</i-footer>
+			</i-layout>
+		</div>
+	</main>
+	<script src="js/global.js"></script>
+	<script src="js/apis.js"></script>
+	<script src="js/home.js"></script>
+</body>
+
+</html>

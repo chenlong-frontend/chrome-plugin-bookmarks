@@ -44,13 +44,18 @@ header {
 
 .bookmark {
   width: 340px;
+  height: 250px;
   padding: 15px 25px;
   margin: 50px auto;
   background: rgba(255, 255, 255, 0.7);
+  overflow: auto;
 }
 
 .bookmark-url {
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.4em;
+  word-break: break-all;
+  overflow: hidden;
 }
 .bookmark-submit-box {
   margin-top: 20px;

@@ -15,10 +15,10 @@ function Apis() {
         ...options
       })
       .then(res => {
+        if (res.status === 403) return Promise.reject({ code: 403 })
         if (res.status >= 200 && res.status < 300) {
           return res.data
         }
-
         return Promise.reject(res)
       })
       .then(res => {
@@ -55,6 +55,9 @@ function Apis() {
     },
     addBookmark: function(data) {
       return request('/opt/save', 'POST', data)
+    },
+    getBookmarks: function(data) {
+      return request('/opt/search', 'POST', data)
     }
   }
 }
