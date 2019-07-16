@@ -15,7 +15,6 @@ function Apis() {
         ...options
       })
       .then(res => {
-        console.log(res)
         if (res.status >= 200 && res.status < 300) {
           return res.data
         }
@@ -59,6 +58,9 @@ function Apis() {
     },
     getBookmarks: function(data) {
       return request('/opt/search', 'POST', data)
+    },
+    deleteBookmark: function(data) {
+      return request('/opt/delete', 'POST', data)
     }
   }
 }
