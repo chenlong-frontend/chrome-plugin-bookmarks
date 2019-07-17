@@ -47,7 +47,20 @@ var mainVue = new Vue({
         }
       }
     ],
-    bookmarks: []
+    bookmarks: [],
+    pageSize: 10,
+    pageIndex: 1
+  },
+  computed: {
+    total() {
+      return this.bookmarks.length
+    },
+    showItems() {
+      return this.bookmarks.slice(
+        (this.pageIndex - 1) * this.pageSize,
+        this.pageIndex * this.pageSize
+      )
+    }
   },
   mounted() {
     chrome.storage.sync.get('token', v => {
@@ -69,6 +82,9 @@ var mainVue = new Vue({
         this.bookmarks = v.data
         this.getData()
       })
+    },
+    changePage(page) {
+      this.pageIndex = page
     }
   }
 })

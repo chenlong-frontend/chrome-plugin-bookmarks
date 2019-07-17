@@ -33,7 +33,10 @@
 					</Breadcrumb>
 					<Card>
 						<div style="min-height: 100%;">
-							<i-table stripe :columns="columns" :data="bookmarks"></i-table>
+							<i-table stripe :columns="columns" :data="showItems"></i-table>
+							<div style="text-align: right;margin-top: 15px;">
+								<Page :total="total"  @on-change="changePage" />
+							</div>
 						</div>
 					</Card>
 				</i-content>
