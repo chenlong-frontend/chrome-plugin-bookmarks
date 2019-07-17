@@ -36,11 +36,12 @@
       <!--用户-->
       <div v-if="isAuth">
         <Row>
-          <i-col span="12">
+          <i-col span="8">
             <Avatar icon="ios-person"></Avatar>
             <span class="user-name">用户1</span>
           </i-col>
-          <i-col span="12" class="user-tool">
+          <i-col span="16" class="user-tool">
+            <i-button @click="importFromBrowser" type="primary" style="margin-right: 5px;">导入浏览器书签</i-button>
             <i-button @click="openBackground" type="primary" style="margin-right: 5px;">收藏列表</i-button>
             <i-button @click="logout">注销</i-button>
           </i-col>

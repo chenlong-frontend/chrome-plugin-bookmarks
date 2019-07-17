@@ -65,7 +65,6 @@ var mainVue = new Vue({
       })
     },
     remove(v) {
-      console.log(v)
       apis.deleteBookmark({ recordId: v.recordId }).then(v => {
         this.bookmarks = v.data
         this.getData()

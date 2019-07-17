@@ -50,15 +50,23 @@ function Apis() {
   }
 
   return {
+    // 登录
     login: function(data) {
       return request('/auth/verifyUserInfo', 'POST', data)
     },
+    // 添加书签
     addBookmark: function(data) {
       return request('/opt/save', 'POST', data)
     },
+    // 批量添加书签
+    addBookmarks: function(data) {
+      return request('/opt/batch', 'POST', data)
+    },
+    // 获取书签
     getBookmarks: function(data) {
       return request('/opt/search', 'POST', data)
     },
+    // 删除书签
     deleteBookmark: function(data) {
       return request('/opt/delete', 'POST', data)
     }
