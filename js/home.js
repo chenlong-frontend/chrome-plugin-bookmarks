@@ -22,6 +22,10 @@ var mainVue = new Vue({
         }
       },
       {
+        title: '标题',
+        key: 'title'
+      },
+      {
         title: '备注',
         key: 'remark'
       },
