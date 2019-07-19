@@ -8,7 +8,8 @@ new Vue({
     },
     bookmark: {
       url: '',
-      remark: ''
+      remark: '',
+      title: ''
     },
     isAuth: false
   },
@@ -21,6 +22,7 @@ new Vue({
     })
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
       this.bookmark.url = tabs[0].url
+      this.bookmark.title = tabs[0].title
     })
   },
   methods: {
@@ -55,6 +57,7 @@ new Vue({
         .addBookmark(this.bookmark)
         .then(() => {
           this.$refs[name].resetFields()
+          this.$Message.success('添加成功')
         })
         .catch(() => {
           this.$Message.error('新增失败')

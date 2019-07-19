@@ -3,6 +3,7 @@ var mainVue = new Vue({
   el: '#main',
   data: {
     isAuth: false,
+    loading: false,
     columns: [
       {
         title: '地址',
@@ -77,11 +78,16 @@ var mainVue = new Vue({
   },
   methods: {
     getData() {
-      apis.getBookmarks().then(v => {
-        this.bookmarks = v.data
-      })
+      this.loading = true
+      apis
+        .getBookmarks()
+        .then(v => {
+          this.bookmarks = v.data
+        })
+        .finally(() => (this.loading = false))
     },
     remove(v) {
+      this.loading = true
       apis.deleteBookmark({ recordId: v.recordId }).then(v => {
         this.bookmarks = v.data
         this.getData()
