@@ -9,7 +9,7 @@ var util = {
     var items = data.pop()
     var { url, title, children } = items
 
-    if (url) arr.push({ url, title })
+    if (url) arr.push({ url, title, remark: '导入', type: 1 })
     if (children) data = [...data, ...children]
 
     return this.getDataByTree(data, arr)
