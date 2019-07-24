@@ -4,9 +4,9 @@ function Apis() {
     timeout: 15000
   })
   var defaultHeaders = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Credentials': '*'
+//    Accept: 'application/json',
+//    'Content-Type': 'application/json',
+//    'Access-Control-Allow-Credentials': '*'
   }
   var request = function(url, method, data) {
     let options = method === 'GET' ? { params: data } : { data }
