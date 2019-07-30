@@ -6,12 +6,17 @@ new Vue({
       username: '',
       password: ''
     },
+    register: {
+      username: '',
+      password: ''
+    },
     bookmark: {
       url: '',
       remark: '',
       title: ''
     },
-    isAuth: false
+    isAuth: false,
+    isLogin: true
   },
   mounted() {
     chrome.storage.sync.get('token', v => {
@@ -28,6 +33,7 @@ new Vue({
   methods: {
     // 登录
     handleSubmit(name) {
+      this.$Loading.start()
       this.$refs[name].validate(() => {
         apis
           .login(this.login)
@@ -37,11 +43,26 @@ new Vue({
               global.token = res.token
               this.$refs[name].resetFields()
               this.isAuth = true
+              this.$Loading.finish()
             })
           })
           .catch(() => {
             this.$Message.error('登录失败')
+            this.$Loading.error()
           })
+      })
+    },
+    onRegister(name) {
+      this.$refs[name].validate(() => {
+        // apis
+        //   .register(this.register)
+        //   .then(() => {
+        //     this.$refs[name].resetFields()
+        //     this.$Message.success('注册成功')
+        //   })
+        //   .catch(() => {
+        //     this.$Message.error('登录失败')
+        //   })
       })
     },
     // 退出登录
@@ -53,14 +74,17 @@ new Vue({
     },
     // 提交书签
     bookmarkSubmit(name) {
+      this.$Loading.start()
       apis
         .addBookmark(this.bookmark)
         .then(() => {
           this.$refs[name].resetFields()
           this.$Message.success('添加成功')
+          this.$Loading.finish()
         })
         .catch(() => {
           this.$Message.error('新增失败')
+          this.$Loading.error()
         })
     },
     // 打开background页
@@ -71,15 +95,25 @@ new Vue({
     importFromBrowser() {
       chrome.bookmarks.getTree(marks => {
         var importedMarks = util.getDataByTree(marks, [])
+        this.$Loading.start()
         apis
           .addBookmarks({ batchRecord: { records: importedMarks } })
           .then(v => {
             this.$Message.success('导入成功')
+            this.$Loading.finish()
           })
           .catch(v => {
             this.$Message.error('导入失败')
+            this.$Loading.error()
           })
       })
+    },
+    // 切换登录与注册
+    toggleLogin(v) {
+      this.isLogin = v
+    },
+    openUrl(url) {
+      chrome.tabs.create({ url })
     }
   }
 })

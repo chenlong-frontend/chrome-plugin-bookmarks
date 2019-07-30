@@ -79,19 +79,29 @@ var mainVue = new Vue({
   methods: {
     getData() {
       this.loading = true
+      this.$Loading.start()
       apis
         .getBookmarks()
         .then(v => {
           this.bookmarks = v.data
         })
-        .finally(() => (this.loading = false))
+        .finally(() => {
+          this.$Loading.finish()
+          this.loading = false
+        })
     },
     remove(v) {
       this.loading = true
-      apis.deleteBookmark({ recordId: v.recordId }).then(v => {
-        this.bookmarks = v.data
-        this.getData()
-      })
+      this.$Loading.start()
+      apis
+        .deleteBookmark({ recordId: v.recordId })
+        .then(v => {
+          this.bookmarks = v.data
+          this.getData()
+        })
+        .finally(() => {
+          this.$Loading.finish()
+        })
     },
     changePage(page) {
       this.pageIndex = page

@@ -3,11 +3,6 @@ function Apis() {
     baseURL: global.baseUrl,
     timeout: 15000
   })
-  var defaultHeaders = {
-//    Accept: 'application/json',
-//    'Content-Type': 'application/json',
-//    'Access-Control-Allow-Credentials': '*'
-  }
   var request = function(url, method, data) {
     let options = method === 'GET' ? { params: data } : { data }
     return instance
@@ -15,7 +10,6 @@ function Apis() {
         url,
         method,
         headers: {
-          ...defaultHeaders,
           ...(global.token ? { Authorization: global.token } : {})
         },
         ...options
@@ -56,6 +50,10 @@ function Apis() {
   }
 
   return {
+    // 注册
+    register: function(data) {
+      return request('/auth/register', 'POST', data)
+    },
     // 登录
     login: function(data) {
       return request('/auth/verifyUserInfo', 'POST', data)
