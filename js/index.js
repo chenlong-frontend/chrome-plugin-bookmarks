@@ -23,6 +23,8 @@ new Vue({
       global.token = v.token
       if (global.token) {
         this.isAuth = true
+      } else {
+        this.getRecommend()
       }
     })
     chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
@@ -114,6 +116,18 @@ new Vue({
     },
     openUrl(url) {
       chrome.tabs.create({ url })
+    },
+    getRecommend() {
+      this.$Loading.start()
+      apis
+        .getRecommendedResource()
+        .then(v => {
+          console.log(v)
+          this.$Loading.finish()
+        })
+        .catch(v => {
+          this.$Loading.error()
+        })
     }
   }
 })

@@ -73,6 +73,10 @@ function Apis() {
     // 删除书签
     deleteBookmark: function(data) {
       return request('/opt/delete', 'POST', data)
+    },
+    // 获取首页推荐
+    getRecommendedResource: function() {
+      return request('/front/getRecommendedResource')
     }
   }
 }
