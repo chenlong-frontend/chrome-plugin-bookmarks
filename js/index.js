@@ -15,6 +15,7 @@ new Vue({
       remark: '',
       title: ''
     },
+    recommendList: [],
     isAuth: false,
     isLogin: true
   },
@@ -122,7 +123,7 @@ new Vue({
       apis
         .getRecommendedResource()
         .then(v => {
-          console.log(v)
+          this.recommendList = v.data
           this.$Loading.finish()
         })
         .catch(v => {

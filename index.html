@@ -81,13 +81,9 @@
       </div>
       <div class="recommend" v-else>
         <ul class="recommend-list">
-          <li>
-            <div><span>百度</span></div>
-            <div><a @click="openUrl('https://www.baidu.com')">https://www.baidu.com</a></div>\
-          </li>
-          <li>
-            <div><span>百度</span></div>
-            <div><a @click="openUrl('https://www.baidu.com')">https://www.baidu.com</a></div>
+          <li v-for="item in recommendList">
+            <div><span>{{item.urlTitle}}</span></div>
+            <div><a @click="openUrl(item.url)">{{item.url}}</a></div>
           </li>
         </ul>
       </div>

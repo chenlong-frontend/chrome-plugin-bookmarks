@@ -76,7 +76,7 @@ function Apis() {
     },
     // 获取首页推荐
     getRecommendedResource: function() {
-      return request('/front/getRecommendedResource')
+      return request('/front/getRecommendedResource', 'GET')
     }
   }
 }
